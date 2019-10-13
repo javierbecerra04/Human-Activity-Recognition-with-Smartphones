@@ -1,0 +1,140 @@
+\documentclass[11pt]{report} % use larger type; default would be 10pt
+%Report
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%% END Article customizations
+
+%%% The "real" document content comes below...
+
+\title{Proyecto de Grado}
+\author{Javier Ricardo Becerra Bedoya}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\begin{document}
+\maketitle
+
+\chapter{INTRODUCCIÓN}
+El objetivo del reconocimiento de actividad es reconocer actividades humanas comunes en entornos de la vida real \cite{kimHAR}. El reconocimiento preciso de actividades es un desafío porque la actividad humana es compleja y altamanete diversa [1]. La investigación en esta área emplea diferentes algoritmos de aprendizaje automático para reconocer actividades simples y complejas como caminar, correr, cocinar, etc [2]. Particularmente, el reconocimiento de las actividades diarias es esencial para mantener un estilo de vida saludable, rehabilitación de pacientes y cambios de actividad entre los adultos mayores que pueden ayudar para detectar y diagnosticar enfermedades graves [2].
+\chapter{MARCO TEÓRICO}
+%\setlength{\parindent}{10ex}
+A lo largo de este capítulo se pretende mostrar los conceptos básicos del análisis de clasificación de actividad humana,
+así como las técnicas y tecnologías que han permitido su desarrollo y aplicación durante los últimos años.
+\par
+\medskip
+\noindent
+Primero, se dará una introducción al concepto de clasificación de actividad humana y del porqué se ha convertido en una herramienta
+de importancia en el análisis médico y de ingeniería en la actualidad. Posteriormente, se explicará detalladamente los métodos usados para el reconocimiento de actividad humana y cuáles son los últimos avances en el tema. Se repasarán aplicaciones útiles ya trabajadas en anteriores trabajos en el campo de acción de la ingeniería.
+\section{Antecedentes}
+En noviembre 07 del 2012 el departamento de medicina física y de rehabilitación, de la Universidad Northwestern
+en Chicago publicó un artículo llamado “Using mobile phones for activity recognition in Parkinson’s patients” en
+el cual expone el trabajo realizado que consistió en identificar 5 actividades (caminando, reposo, sentado, de pie,
+o no utilizando el celular) de 18 sujetos sanos y 8 pacientes con enfermedad de Parkinson. Además, se mostraban
+las diferencias que hay entre los algoritmos de reconocimiento de actividad corporal entre personas sanas y
+pacientes. Los resultados del proyecto arrojaron una exactitud del 96,1 \% de clasificación de actividades en las
+personas sanas y un 92,2 \% en los pacientes. 
+\par
+\medskip
+\noindent
+En cuanto a los mecanismos de monitoreo de pacientes con Parkinson, se encuentra una aplicación móvil llamada
+CloudUPDRS, es un sistema de análisis de datos que pueden usar los pacientes y sus cuidadores para evaluar con
+precisión los síntomas motores de Parkinson. Se puede analizar movimientos como temblor, marcha y la capacidad
+con la que interactúan con el Smartphone, para evaluar con precisión los síntomas de la enfermedad usando el
+método UPDRS (Unified Parkinson’s Disease Rating Scale). Tiene la capacidad de descartar información falsa al
+92,5\% [7].
+\par
+\medskip
+\noindent
+Existe un sistema llamado Mobility Lab de APDM el cual pretende medir la progresión longitudinal de la
+enfermedad de Parkinson. Analizan el equilibrio y la marcha de los pacientes ya que son los dos impedimentos
+motores que más afectan la calidad de vida de los enfermos con Parkinson. Utilizan unos sensores llamados Opal,
+que se localizan en las piernas, el tronco y los brazos, durante las dos actividades prescritas. Este sistema es una
+aplicación futura debido a las medidas fiables que se pueden realizar con estos sensores. [11]
+\par
+\medskip
+\noindent
+Adicionalmente, en un proyecto realizado por un grupo de universidades latinoamericanas y liderado por Mónica
+Huerta, con el título “Monitoreo remoto de pacientes con la enfermedad de Parkinson”, se pretendía mejorar el
+diagnóstico y monitoreo de la enfermedad [12]. Usaron en la investigación un sensor de Kinect, smartphones,
+hardware libre y smartwatch. Para cada dispositivo diseñaron una solución de monitoreo de la enfermedad. Es un
+avance para proyectos futuros aplicados a la biomedicina, especialmente en enfermedades motoras.
+\par
+\medskip
+\noindent
+Finalmente, motivados por la necesidad de detectar automáticamente las diferentes actividades humanas, la
+plataforma Kaggle lanzó en el 2016 un concurso abierto [10]. Para esto, pusieron a disposición una base de datos
+de señales de acelerómetros, correspondientes a 6 actividades de 30 personas. Grupos de diferentes partes del
+mundo, desarrollaron métodos de clasificación de actividad humana, obteniendo 98\% de exactitud entre los
+resultados más destacados.
+\section{Algoritmos de Inteligencia artificial en HAR}
+En las últimas décadas, un cambio drástico cambió la manera en la que almacenamos, percibimos y procesamos los datos. Una cantidad gigante de datos es generada cada segundo y si se analiza eficientemente estos datos pueden revelar importante información. Una parte importante en la predicción es seleccionar modelos adecuados[3]. Uno de los objetivos del proyecto es implementar los siguientes algoritmos en Matlab y analizar cuál es el más eficiente a la hora de clasificar actividad humana.
+\subsection {Árbol de decisiones}
+ Un árbol de decisión es un modelo de predicción. Dado un conjunto de datos se fabrican diagramas de construcciones lógicas, que sirven para representar y categorizar una serie de condiciones que ocurren de forma sucesiva, para la resolución de un problema. Los árboles de decisión están formados por nodos, vectores de números, flechas y etiquetas. Cada nodo se puede definir como el momento en el que se ha de tomar una decisión de entre varias posibles, lo que va haciendo que a medida que aumenta el número de nodos aumente el número de posibles finales a los que puede llegar el individuo. Los vectores de números serían la solución final a la que se llega en función de las diversas posibilidades que se tienen, dan las utilidades en esa solución. Las flechas son las uniones entre un nodo y otro y representan cada acción distinta. Las etiquetas se encuentran en cada nodo y cada flecha y dan nombre a cada acción [4].
+\subsection {Random Forests}
+Es un clasificador que consiste en una colección independiente, idénticamente distribuida y al azar de clasificadores organizados en árboles, en donde cada árbol aporta un único voto a la clase más popular de X. Básicamente, para los agrupamientos Random Forests selecciona al azar un subconjunto de los atributos para luego volver a seleccionar el mejor corte entre estos. Posteriormente el proceso se repite en cada uno de los árboles (muchos árboles crecen de la misma manera) para así construir un bosque. Finalmente todos los árboles son usados en el resultado final a partir del promedio de los resultados de cada uno de los árboles [5]  
+\subsection {Support Vector Machine}
+Son un conjunto de algoritmos de aprendizaje supervisado. Estos métodos están propiamente relacionados con problemas de clasificación y regresión. Dado un conjunto de ejemplos de entrenamiento (de muestras) podemos etiquetar las clases y entrenar una SVM es un modelo que representa a los puntos de muestra en el espacio, separando las clases a 2 espacios lo más amplios posibles mediante un hiperplano de separación definido como el vector entre los 2 puntos, de las 2 clases, más cercanos al que se llama vector sporte. Cuando las nuevas muestras se ponen en correspondencia con dicho modelo, en función de los espacios a los que pertenezcan, pueden ser clasificadas a una o la otra clase.
+
+\chapter{OBJETIVO DEL PROYECTO}
+
+\section{Objetivo General}
+
+\section{Objetivos Específicos}
+
+\chapter{DESARROLLO}
+
+\chapter{PROTOCOLO DE PRUEBAS}
+
+\chapter{ANÁLISIS DE RESULTADOS}
+
+\chapter{CONCLUSIONES Y RECOMENDACIONES}
+
+\chapter{BIBLIOGRAFIA}
+
+[1] https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3023457/
+[2] Cao, L., Wang, Y., Zhang, B., Jin, Q., \& Vasilakos, A. V. (2017). GCHAR: An efficient Group-based Context–aware human activity recognition on smartphone. Journal of Parallel and Distributed Computing
+
+\chapter{ANEXOS}
+
+\end{document}
